@@ -8,7 +8,7 @@ Group=www-data
 WorkingDirectory=/var/www/aplicamosia.es
 EnvironmentFile=/var/www/aplicamosia.es/.env
 ExecStart=/var/www/aplicamosia.es/.venv/bin/gunicorn config.wsgi:application \
-    --bind 127.0.0.1:8027 \
+    --bind 127.0.0.1:8047 \
     --workers 2 \
     --timeout 60 \
     --access-logfile - \

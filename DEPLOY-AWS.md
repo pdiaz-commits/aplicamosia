@@ -7,7 +7,7 @@ Misma máquina que `oca-i.net`. **No sustituye** ese sitio. Puerto interno propi
 | Servidor | Lightsail `15.224.60.79` (`ssh lightsail`) |
 | Ruta | `/var/www/aplicamosia.es` |
 | Dominio | `aplicamosia.es` + `www` |
-| Proceso | Gunicorn → `127.0.0.1:8027` |
+| Proceso | Gunicorn → `127.0.0.1:8047` |
 | Público | solo nginx 80/443 |
 
 No usar Hostinger para esta web.
