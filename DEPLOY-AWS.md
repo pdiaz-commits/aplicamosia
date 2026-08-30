@@ -1,6 +1,6 @@
 # AplicamosIA en AWS Lightsail (Django)
 
-Misma máquina que `oca-i.net`. **No sustituye** ese sitio. Puerto interno propio: `8027`.
+Misma máquina que `oca-i.net`. **No sustituye** ese sitio. Puerto interno propio: `8047`.
 
 | Campo | Valor |
 | --- | --- |
