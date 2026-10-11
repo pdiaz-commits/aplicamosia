@@ -19,7 +19,15 @@ No usar Hostinger para esta web.
 | A | `@` | `15.224.60.79` | Naranja |
 | A | `www` | `15.224.60.79` | Naranja |
 
-SSL/TLS: **Full**. Correo: Email Routing → `hola@aplicamosia.es` → Merlin.
+SSL/TLS: **Full**. Origen: Let's Encrypt (`certbot --nginx -d aplicamosia.es -d www.aplicamosia.es`). Correo: Email Routing → `hola@aplicamosia.es` → Merlin.
+
+Tras el primer `nginx -t && reload`, emitir el certificado (HTTP-01 pasa por Cloudflare naranja si Always Use HTTPS está off):
+
+```bash
+sudo certbot --nginx -d aplicamosia.es -d www.aplicamosia.es --redirect
+```
+
+Sin bloque 443, HTTPS cae en el vhost SSL por defecto de la máquina (p. ej. academy.moodlesites.org).
 
 ## Despliegue
 

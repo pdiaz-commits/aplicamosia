@@ -1,159 +1,131 @@
 {% load static %}
 <!doctype html>
-<html lang="es">
+<html lang="{{ c.html_lang }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="AplicamosIA es una agencia de IA. Implementamos sistemas que venden, atienden y automatizan. Diagnóstico, piloto en 7 días y operación con control humano.">
-  <title>AplicamosIA — Agencia de IA</title>
+  <meta name="description" content="{{ c.description }}">
+  <title>{{ c.title }}</title>
+  <link rel="alternate" hreflang="es" href="https://aplicamosia.es/">
+  <link rel="alternate" hreflang="en-GB" href="https://aplicamosia.es/?lang=en">
+  <link rel="alternate" hreflang="x-default" href="https://aplicamosia.es/">
   <link rel="stylesheet" href="{% static 'landing/site.css' %}">
   <script src="{% static 'landing/site.js' %}" defer></script>
 </head>
 <body>
-  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <a class="skip-link" href="#contenido">{{ c.skip }}</a>
   <header class="site-header">
-    <a class="brand" href="#inicio" aria-label="AplicamosIA, inicio">
+    <a class="brand" href="#inicio" aria-label="{{ c.brand_aria }}">
       <span class="brand-mark" aria-hidden="true">IA</span>
       <span>AplicamosIA</span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">Menú</button>
-    <nav id="main-nav" class="main-nav" aria-label="Navegación principal">
-      <a href="#paquetes">Paquetes</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#metodo">7 días</a>
-      <a href="#chat">Chat</a>
+    <nav id="main-nav" class="main-nav" aria-label="{{ c.nav_aria }}">
+      <a href="#paquetes">{{ c.nav_packages }}</a>
+      <a href="#servicios">{{ c.nav_services }}</a>
+      <a href="#metodo">{{ c.nav_method }}</a>
+      <a href="#chat">{{ c.nav_chat }}</a>
     </nav>
-    <a class="button button-gradient header-cta" href="#contacto">Pedir diagnóstico</a>
+    <div class="header-end">
+      <nav class="lang-flags" aria-label="{{ c.lang_aria }}">
+        <a href="?lang=es" hreflang="es" lang="es" class="{% if lang == 'es' %}is-on{% endif %}" aria-label="{{ c.lang_es }}"{% if lang == 'es' %} aria-current="true"{% endif %}>
+          <span class="lang-flags__flag" aria-hidden="true">🇪🇸</span>
+          <span class="lang-flags__code">ES</span>
+        </a>
+        <a href="?lang=en" hreflang="en-GB" lang="en-GB" class="{% if lang == 'en' %}is-on{% endif %}" aria-label="{{ c.lang_en }}"{% if lang == 'en' %} aria-current="true"{% endif %}>
+          <span class="lang-flags__flag" aria-hidden="true">🇬🇧</span>
+          <span class="lang-flags__code">EN</span>
+        </a>
+      </nav>
+      <a class="button button-gradient header-cta" href="#contacto">{{ c.cta }}</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">{{ c.menu }}</button>
+    </div>
   </header>
 
   <main id="contenido">
     <section id="inicio" class="hero section-shell">
       <div class="hero-copy">
-        <p class="badge">Agencia de IA · AplicamosIA.es</p>
-        <h1>Transformamos tu negocio con <span>IA avanzada</span></h1>
-        <p class="hero-lead">Automatiza procesos, aumenta conversiones y ahorra tiempo con nuestros agentes de IA. Soluciones claras para pymes: venden, atienden y automatizan, con resultados que puedes ver.</p>
+        <p class="badge">{{ c.badge }}</p>
+        <h1>{{ c.h1_before }}<span>{{ c.h1_accent }}</span></h1>
+        <p class="hero-lead">{{ c.lead }}</p>
         <div class="hero-actions">
-          <a class="button button-gradient" href="#contacto">Pedir diagnóstico</a>
-          <a class="button button-ghost" href="#chat">Ver el asistente</a>
+          <a class="button button-gradient" href="#contacto">{{ c.cta }}</a>
+          <a class="button button-ghost" href="#chat">{{ c.see_assistant }}</a>
         </div>
-        <ul class="trust-list" aria-label="Compromisos de servicio">
-          <li>Tres paquetes de entrada claros</li>
-          <li>Piloto visible en 7 días</li>
-          <li>Privacidad y control humano</li>
+        <ul class="trust-list" aria-label="{{ c.trust_aria }}">
+          {% for item in c.trust %}
+          <li>{{ item }}</li>
+          {% endfor %}
         </ul>
       </div>
       <div class="hero-visual" aria-hidden="true">
         <div class="hero-glow"></div>
         <figure class="dash-card">
-          <figcaption>Flujo en vivo · ejemplo ilustrativo</figcaption>
-          <strong>Lead cualificado</strong>
+          <figcaption>{{ c.dash_caption }}</figcaption>
+          <strong>{{ c.dash_title }}</strong>
           <ul>
-            <li><span>Agente</span> Conversación iniciada</li>
-            <li><span>CRM</span> Contacto enriquecido</li>
-            <li><span>Agenda</span> Reunión propuesta</li>
-            <li><span>Equipo</span> Aprobación pendiente</li>
+            {% for label, value in c.dash_rows %}
+            <li><span>{{ label }}</span> {{ value }}</li>
+            {% endfor %}
           </ul>
         </figure>
       </div>
     </section>
 
-    <section class="proof-strip" aria-label="Áreas de trabajo">
-      <p>Vendemos, atendemos, automatizamos</p>
-      <div><span>Ventas</span><span>Atención</span><span>Operaciones</span><span>Marketing</span><span>Datos</span></div>
+    <section class="proof-strip" aria-label="{{ c.proof_aria }}">
+      <p>{{ c.proof_line }}</p>
+      <div>{% for tag in c.proof_tags %}<span>{{ tag }}</span>{% endfor %}</div>
     </section>
 
     <section id="paquetes" class="section-shell section-space">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Cómo empezar</p>
-          <h2>Tres paquetes de entrada. Sin humo ni cifras inventadas.</h2>
+          <p class="eyebrow">{{ c.packages_eyebrow }}</p>
+          <h2>{{ c.packages_title }}</h2>
         </div>
-        <p>Elige el alcance. Cada paquete termina con algo que puedes ver, usar o decidir.</p>
+        <p>{{ c.packages_lead }}</p>
       </div>
       <div class="package-grid">
-        <article>
-          <p class="tag">01 · Entrada</p>
-          <h3>Diagnóstico</h3>
-          <p>Una sesión para mapear procesos, herramientas y el primer caso con impacto.</p>
+        {% for pack in c.packages %}
+        <article{% if pack.featured %} class="package-featured"{% endif %}>
+          <p class="tag">{{ pack.tag }}</p>
+          <h3>{{ pack.title }}</h3>
+          <p>{{ pack.text }}</p>
           <ul>
-            <li>Mapa de cuellos de botella</li>
-            <li>Prioridad por impacto y riesgo</li>
-            <li>Recomendación del siguiente paquete</li>
+            {% for item in pack.items %}
+            <li>{{ item }}</li>
+            {% endfor %}
           </ul>
         </article>
-        <article class="package-featured">
-          <p class="tag">02 · Recomendado</p>
-          <h3>Piloto en 7 días</h3>
-          <p>Un flujo real: vende, atiende o automatiza una tarea concreta, con tus reglas.</p>
-          <ul>
-            <li>Agente o automatización acotada</li>
-            <li>Demostración visible al día 7</li>
-            <li>Criterios de calidad y escalado humano</li>
-          </ul>
-        </article>
-        <article>
-          <p class="tag">03 · Operación</p>
-          <h3>Sistema en marcha</h3>
-          <p>Integramos canales, CRM y aprobaciones. El equipo lo opera con supervisión.</p>
-          <ul>
-            <li>Integración con herramientas actuales</li>
-            <li>Registro y revisión de interacciones</li>
-            <li>Acompañamiento de las primeras semanas</li>
-          </ul>
-        </article>
+        {% endfor %}
       </div>
     </section>
 
     <section id="servicios" class="section-shell section-space">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Qué hacemos</p>
-          <h2>Servicios claros. Sin jerga de consultora grande.</h2>
+          <p class="eyebrow">{{ c.services_eyebrow }}</p>
+          <h2>{{ c.services_title }}</h2>
         </div>
-        <p>Tomamos las ideas útiles de una agencia AI-native y las bajamos a pymes: un proceso, un canal, un resultado visible.</p>
+        <p>{{ c.services_lead }}</p>
       </div>
       <div class="service-cards">
+        {% for tag, title, text in c.services %}
         <article>
-          <p class="tag">Vender</p>
-          <h3>Agente comercial</h3>
-          <p>Responde por WhatsApp, web o teléfono, cualifica y agenda. Ventas y seguimiento en un solo flujo.</p>
+          <p class="tag">{{ tag }}</p>
+          <h3>{{ title }}</h3>
+          <p>{{ text }}</p>
         </article>
-        <article>
-          <p class="tag">Atender</p>
-          <h3>Canales con IA</h3>
-          <p>Web, WhatsApp y correo con la misma respuesta. Escala a una persona cuando el caso lo pide.</p>
-        </article>
-        <article>
-          <p class="tag">Automatizar</p>
-          <h3>Automatización con personas</h3>
-          <p>Orquesta formularios, CRM y documentos. La IA hace el trabajo repetitivo; tu equipo decide lo sensible.</p>
-        </article>
-        <article>
-          <p class="tag">Clientes</p>
-          <h3>Ventas y atención unidas</h3>
-          <p>Menos leads perdidos y menos consultas repetidas. Un criterio para vender y otro para cuidar al cliente.</p>
-        </article>
-        <article>
-          <p class="tag">Construir</p>
-          <h3>Webs y herramientas</h3>
-          <p>Landings, portales y asistentes sobre lo que ya usas. Ingeniería simple, lista para el día a día.</p>
-        </article>
-        <article>
-          <p class="tag">Método</p>
-          <h3>IA en el negocio, no encima</h3>
-          <p>Empezamos por un cuello de botella. No pedimos transformar toda la empresa para demostrar valor.</p>
-        </article>
+        {% endfor %}
       </div>
     </section>
 
     <section class="benefits section-shell" aria-labelledby="benefits-title">
-      <p class="eyebrow">Para qué sirve</p>
-      <h2 id="benefits-title">Menos fricción. Más tiempo para vender y atender.</h2>
+      <p class="eyebrow">{{ c.benefits_eyebrow }}</p>
+      <h2 id="benefits-title">{{ c.benefits_title }}</h2>
       <ul class="benefit-grid">
-        <li><strong>Más rápido</strong><span>Un piloto visible en días, no un proyecto eterno.</span></li>
-        <li><strong>Menos coste operativo</strong><span>Menos horas a mano en correo, WhatsApp y Excel.</span></li>
-        <li><strong>Mejor experiencia</strong><span>El cliente recibe respuesta; tu equipo recibe casos útiles.</span></li>
-        <li><strong>Listo para crecer</strong><span>Si funciona, lo integramos. Si no, lo paramos.</span></li>
+        {% for title, text in c.benefits %}
+        <li><strong>{{ title }}</strong><span>{{ text }}</span></li>
+        {% endfor %}
       </ul>
     </section>
 
@@ -161,19 +133,15 @@
       <div class="section-shell">
         <div class="section-heading">
           <div>
-            <p class="eyebrow">Método</p>
-            <h2>De un cuello de botella a un piloto en 7 días.</h2>
+            <p class="eyebrow">{{ c.method_eyebrow }}</p>
+            <h2>{{ c.method_title }}</h2>
           </div>
-          <p>El calendario es orientativo: se ajusta al acceso que nos des.</p>
+          <p>{{ c.method_lead }}</p>
         </div>
         <ol class="week-steps">
-          <li><span>Día 1</span><h3>Diagnóstico</h3><p>Procesos, herramientas y un solo caso.</p></li>
-          <li><span>Día 2</span><h3>Diseño</h3><p>Guion, límites y control humano.</p></li>
-          <li><span>Día 3</span><h3>Datos</h3><p>Fuentes mínimas y criterios de calidad.</p></li>
-          <li><span>Día 4</span><h3>Construcción</h3><p>Agente o automatización acotada.</p></li>
-          <li><span>Día 5</span><h3>Conexión</h3><p>Canal, CRM o calendario.</p></li>
-          <li><span>Día 6</span><h3>Pruebas</h3><p>Casos reales y ajustes con tu equipo.</p></li>
-          <li><span>Día 7</span><h3>Demostración</h3><p>Flujo visible y decisión de seguir.</p></li>
+          {% for day, title, text in c.days %}
+          <li><span>{{ day }}</span><h3>{{ title }}</h3><p>{{ text }}</p></li>
+          {% endfor %}
         </ol>
       </div>
     </section>
@@ -181,64 +149,64 @@
     <section id="chat" class="chat-section section-shell section-space">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Asistente</p>
-          <h2>Chat AplicamosIA — cuéntanos tu caso</h2>
+          <p class="eyebrow">{{ c.chat_eyebrow }}</p>
+          <h2>{{ c.chat_title }}</h2>
         </div>
-        <p>El asistente escucha tu negocio, pregunta qué procesos quieres mejorar y te propone el paquete que encaja. Al final puedes enviar el resumen por correo.</p>
+        <p>{{ c.chat_lead }}</p>
       </div>
-      <div class="agency-chat" id="agencyChat" data-api-url="/api/chat/">
+      <div class="agency-chat" id="agencyChat" data-api-url="/api/chat/" data-lang="{{ lang }}">
         <div class="agency-chat__log" id="chatLog" role="log" aria-live="polite">
-          <div class="chat-msg chat-msg--bot">Hola. Soy el asistente de AplicamosIA. Cuéntame qué hace tu negocio y qué proceso quieres acelerar: vender, atender o automatizar.</div>
+          <div class="chat-msg chat-msg--bot">{{ c.welcome }}</div>
         </div>
         <form class="agency-chat__form" id="chatForm">
-          <label class="visually-hidden" for="chatInput">Tu mensaje</label>
-          <input id="chatInput" name="message" type="text" maxlength="2000" autocomplete="off" required placeholder="Necesito…">
-          <button class="button button-gradient" type="submit">Enviar</button>
+          <label class="visually-hidden" for="chatInput">{{ c.input_label }}</label>
+          <input id="chatInput" name="message" type="text" maxlength="2000" autocomplete="off" required placeholder="{{ c.placeholder }}">
+          <button class="button button-gradient" type="submit">{{ c.send }}</button>
         </form>
-        <div class="chat-chips" aria-label="Ejemplos">
-          <button type="button" data-chat-example="Atendemos una clínica y se nos acumulan las llamadas">Clínica y llamadas</button>
-          <button type="button" data-chat-example="Vendemos online y los leads se quedan sin respuesta">Leads sin respuesta</button>
-          <button type="button" data-chat-example="Perdemos horas pasando datos de formularios al CRM">Formularios al CRM</button>
+        <div class="chat-chips" aria-label="{{ c.examples_aria }}">
+          {% for example, label in c.examples %}
+          <button type="button" data-chat-example="{{ example }}">{{ label }}</button>
+          {% endfor %}
         </div>
-        <p class="chat-meta">Consultas sobre AplicamosIA. Si hay clave Groq, responde con IA; si no, guía el caso igual.</p>
+        <p class="chat-meta">{{ c.chat_meta }}</p>
         <div class="lead-panel" id="leadPanel" hidden>
-          <h3>Enviar resumen</h3>
-          <p>Ya hay un primer encaje. Déjanos un correo y te escribimos para el diagnóstico. No se envía nada hasta que pulses el botón.</p>
+          <h3>{{ c.lead_title }}</h3>
+          <p>{{ c.lead_text }}</p>
           <form id="leadForm">
-            <label class="visually-hidden" for="leadEmail">Correo</label>
-            <input id="leadEmail" type="email" required autocomplete="email" placeholder="tu@email.com">
-            <label class="visually-hidden" for="leadCompany">Empresa</label>
-            <input id="leadCompany" type="text" autocomplete="organization" placeholder="Empresa (opcional)">
-            <button class="button button-gradient" type="submit">Preparar correo</button>
+            <label class="visually-hidden" for="leadEmail">{{ c.email_label }}</label>
+            <input id="leadEmail" type="email" required autocomplete="email" placeholder="{{ c.email_placeholder }}">
+            <label class="visually-hidden" for="leadCompany">{{ c.company_label }}</label>
+            <input id="leadCompany" type="text" autocomplete="organization" placeholder="{{ c.company_placeholder }}">
+            <button class="button button-gradient" type="submit">{{ c.prepare_email }}</button>
           </form>
         </div>
       </div>
+      <script type="application/json" id="chat-i18n">{{ chat_i18n|safe }}</script>
     </section>
 
     <section id="seguridad" class="section-shell section-space responsible">
       <div>
-        <p class="eyebrow">Privacidad y control humano</p>
-        <h2>La IA no decide sola lo que importa.</h2>
-        <p>Cada solución define qué datos puede usar, qué acciones puede tomar y cuándo debe intervenir una persona.</p>
+        <p class="eyebrow">{{ c.privacy_eyebrow }}</p>
+        <h2>{{ c.privacy_title }}</h2>
+        <p>{{ c.privacy_lead }}</p>
       </div>
       <div class="control-list">
-        <article><span>01</span><div><h3>Datos mínimos</h3><p>Solo la información necesaria para esa tarea.</p></div></article>
-        <article><span>02</span><div><h3>Supervisión humana</h3><p>Aprobaciones y límites en acciones sensibles.</p></div></article>
-        <article><span>03</span><div><h3>Trazabilidad</h3><p>Registro de interacciones para revisar.</p></div></article>
-        <article><span>04</span><div><h3>Proveedor adecuado</h3><p>Según riesgo, coste y residencia del dato.</p></div></article>
+        {% for num, title, text in c.controls %}
+        <article><span>{{ num }}</span><div><h3>{{ title }}</h3><p>{{ text }}</p></div></article>
+        {% endfor %}
       </div>
     </section>
 
     <section id="contacto" class="contact-section">
       <div class="section-shell contact-inner">
         <div>
-          <p class="eyebrow">Primer paso</p>
-          <h2>¿Qué tarea consume demasiado tiempo en tu empresa?</h2>
+          <p class="eyebrow">{{ c.contact_eyebrow }}</p>
+          <h2>{{ c.contact_title }}</h2>
         </div>
         <div>
-          <p>Identificamos el caso con más impacto y te decimos si merece automatizarlo.</p>
-          <a class="button button-light" href="mailto:merlin655040999@gmail.com?subject=Diagnóstico%20AplicamosIA">Pedir diagnóstico</a>
-          <small>Respuesta en un día laborable · Madrid</small>
+          <p>{{ c.contact_lead }}</p>
+          <a class="button button-light" href="mailto:merlin655040999@gmail.com?subject={{ c.mail_subject|urlencode }}">{{ c.cta }}</a>
+          <small>{{ c.contact_note }}</small>
         </div>
       </div>
     </section>
@@ -247,11 +215,11 @@
   <footer class="site-footer section-shell">
     <div>
       <a class="brand" href="#inicio"><span class="brand-mark" aria-hidden="true">IA</span><span>AplicamosIA</span></a>
-      <p>Agencia de IA. Sistemas que venden, atienden y automatizan.</p>
+      <p>{{ c.footer_line }}</p>
     </div>
-    <div><strong>Contacto</strong><a href="mailto:merlin655040999@gmail.com">merlin655040999@gmail.com</a></div>
-    <div><strong>Explorar</strong><a href="#paquetes">Paquetes</a><a href="#chat">Chat</a></div>
-    <p class="copyright">© 2026 AplicamosIA · Borrador local. No publicado.</p>
+    <div><strong>{{ c.footer_contact }}</strong><a href="mailto:merlin655040999@gmail.com">merlin655040999@gmail.com</a></div>
+    <div><strong>{{ c.footer_explore }}</strong><a href="#paquetes">{{ c.nav_packages }}</a><a href="#chat">{{ c.nav_chat }}</a></div>
+    <p class="copyright">{{ c.copyright }}</p>
   </footer>
 </body>
 </html>

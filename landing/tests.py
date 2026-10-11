@@ -28,6 +28,20 @@ class LandingPageTests(TestCase):
         self.assertContains(response, 'href="#chat"')
         self.assertContains(response, 'href="#contacto"')
         self.assertContains(response, "Saltar al contenido")
+        self.assertContains(response, "🇬🇧")
+        self.assertContains(response, 'hreflang="en-GB"')
+
+    def test_english_uk_version(self):
+        response = self.client.get(reverse("home"), {"lang": "en"})
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'lang="en-GB"')
+        self.assertContains(response, "advanced AI")
+        self.assertContains(response, "Request a diagnostic")
+        self.assertContains(response, "7-day pilot")
+        self.assertContains(response, "Privacy and human control")
+        self.assertContains(response, "English (United Kingdom)")
+        self.assertNotContains(response, "Transformamos tu negocio")
 
 
 class ChatApiTests(TestCase):

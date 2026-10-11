@@ -24,6 +24,9 @@ if (chatRoot) {
   const leadPanel = document.getElementById('leadPanel');
   const leadForm = document.getElementById('leadForm');
   const apiUrl = chatRoot.dataset.apiUrl || '/api/chat/';
+  const lang = chatRoot.dataset.lang || 'es';
+  const i18nNode = document.getElementById('chat-i18n');
+  const i18n = i18nNode ? JSON.parse(i18nNode.textContent) : {};
   const history = [];
 
   function appendMessage(text, isUser) {
@@ -34,24 +37,16 @@ if (chatRoot) {
     log.scrollTop = log.scrollHeight;
   }
 
-  function localReply(message) {
+  function localReply() {
     const turns = history.filter((item) => item.role === 'user').length;
+    const lines = i18n.fallback || [];
     if (turns <= 1) {
-      return {
-        reply: 'Gracias. ¿Tu empresa vende, atiende clientes o pierde tiempo en tareas a mano?',
-        ready_for_lead: false,
-      };
+      return { reply: lines[0] || '', ready_for_lead: false };
     }
     if (turns === 2) {
-      return {
-        reply: '¿Qué usáis hoy (WhatsApp, CRM, correo o Excel) y qué se atasca?',
-        ready_for_lead: false,
-      };
+      return { reply: lines[1] || '', ready_for_lead: false };
     }
-    return {
-      reply: 'Encaja un diagnóstico y, si hay caso, un piloto en 7 días. ¿Preparo el resumen por correo?',
-      ready_for_lead: true,
-    };
+    return { reply: lines[2] || '', ready_for_lead: true };
   }
 
   document.querySelectorAll('[data-chat-example]').forEach((button) => {
@@ -81,15 +76,15 @@ if (chatRoot) {
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, history: history.slice(0, -1) }),
+        body: JSON.stringify({ message, history: history.slice(0, -1), lang }),
       });
       data = await response.json();
     } catch (error) {
-      data = localReply(message);
+      data = localReply();
     }
     thinking.remove();
 
-    const reply = data.reply || '¿Puedes contarme un poco más del negocio?';
+    const reply = data.reply || i18n.more || '';
     appendMessage(reply, false);
     history.push({ role: 'assistant', content: reply });
     if (data.ready_for_lead && leadPanel) leadPanel.hidden = false;
@@ -102,9 +97,9 @@ if (chatRoot) {
     const email = document.getElementById('leadEmail').value.trim();
     const company = document.getElementById('leadCompany').value.trim();
     const transcript = history.map((item) => `${item.role}: ${item.content}`).join('\n');
-    const subject = encodeURIComponent('Diagnóstico AplicamosIA');
+    const subject = encodeURIComponent(i18n.subject || 'AplicamosIA');
     const body = encodeURIComponent(
-      `Correo: ${email}\nEmpresa: ${company || '—'}\n\nConversación:\n${transcript}`
+      `${i18n.email || 'Email'}: ${email}\n${i18n.company || 'Company'}: ${company || '—'}\n\n${i18n.chat || 'Conversation'}:\n${transcript}`
     );
     window.location.href = `mailto:merlin655040999@gmail.com?subject=${subject}&body=${body}`;
   });

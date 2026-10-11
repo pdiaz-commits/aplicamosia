@@ -5,6 +5,18 @@ import urllib.request
 
 READY_TAG = "[LISTO_PARA_ENVIO]"
 
+SYSTEM_PROMPT_EN = """You are the sales assistant for AplicamosIA, an AI agency. Write in British English.
+
+Rules:
+- Talk only about AplicamosIA: systems that sell, support customers and automate work.
+- Do not invent clients, logos, prices or fixed deadlines. The pilot is described as a guide of 7 days.
+- 120 words maximum. One or two questions per turn.
+- Flow: 1) what the business does, 2) which process hurts, 3) which tools they use, 4) propose Diagnostic, 7-day pilot or System in operation.
+- When you have sector + process + an idea of how to help, offer to email the summary and add exactly [LISTO_PARA_ENVIO] on its own line.
+- If they ask about another brand or unrelated topics, bring the conversation back to AplicamosIA.
+- Contact: merlin655040999@gmail.com
+"""
+
 SYSTEM_PROMPT = """Eres el asistente comercial de AplicamosIA, una agencia de IA.
 
 Reglas:
@@ -28,10 +40,34 @@ def _user_turns(history, message):
     return count
 
 
-def guided_reply(message, history):
+def guided_reply(message, history, lang="es"):
     text = (message or "").strip()
     turns = _user_turns(history, text)
     low = text.lower()
+
+    if lang == "en":
+        if turns <= 1:
+            return (
+                "Thank you. To narrow the case: does your company sell, support customers, "
+                "or carry a lot of repetitive work in operations?"
+            ), False
+        if turns == 2:
+            return (
+                "Understood. What tool do you use for that today (WhatsApp, a CRM, email, "
+                "a spreadsheet or something else), and where does it get stuck: slow replies, "
+                "follow-up or manual tasks?"
+            ), False
+        if any(word in low for word in ("price", "cost", "how much", "quote", "fee")):
+            return (
+                "I do not close prices in chat. The usual path is a diagnostic and, "
+                "if it fits, a visible pilot in 7 days. Shall I email you a summary "
+                "so you can request that diagnostic?"
+            ), True
+        return (
+            "From what you describe, a bounded pilot fits: an agent or an automation "
+            "on that flow, with a human in control. The first step is a diagnostic. "
+            "Shall we email this summary so we can continue?"
+        ), True
 
     if turns <= 1:
         return (
@@ -60,12 +96,13 @@ def guided_reply(message, history):
     return reply, True
 
 
-def groq_reply(message, history):
+def groq_reply(message, history, lang="es"):
     key = os.environ.get("GROQ_API_KEY", "").strip()
     if not key:
         return None
 
-    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
+    prompt = SYSTEM_PROMPT_EN if lang == "en" else SYSTEM_PROMPT
+    messages = [{"role": "system", "content": prompt}]
     for item in (history or [])[-10:]:
         role = item.get("role")
         content = item.get("content")
@@ -108,9 +145,9 @@ def groq_reply(message, history):
     return reply.replace(READY_TAG, "").strip(), ready
 
 
-def answer(message, history):
-    remote = groq_reply(message, history)
+def answer(message, history, lang="es"):
+    remote = groq_reply(message, history, lang=lang)
     if remote:
         return {"reply": remote[0], "ready_for_lead": remote[1], "engine": "groq"}
-    reply, ready = guided_reply(message, history)
+    reply, ready = guided_reply(message, history, lang=lang)
     return {"reply": reply, "ready_for_lead": ready, "engine": "guided"}
