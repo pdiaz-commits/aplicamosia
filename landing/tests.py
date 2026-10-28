@@ -20,6 +20,19 @@ class LandingPageTests(TestCase):
         self.assertNotContains(response, "floWolf")
         self.assertNotContains(response, "Noktis")
 
+    def test_home_shows_demo_portfolio(self):
+        response = self.client.get(reverse("home"))
+
+        self.assertContains(response, 'id="portafolio"')
+        self.assertContains(response, 'href="#portafolio"')
+        self.assertContains(response, "Recepcionista de voz 24/7")
+        self.assertContains(response, "Reservas por WhatsApp y teléfono")
+        self.assertContains(response, "landing/portfolio/dental.jpg")
+        self.assertContains(response, "negocios ficticios")
+
+        en = self.client.get(reverse("home"), {"lang": "en"})
+        self.assertContains(en, "24/7 voice receptionist")
+
     def test_home_exposes_accessible_primary_navigation(self):
         response = self.client.get(reverse("home"))
 

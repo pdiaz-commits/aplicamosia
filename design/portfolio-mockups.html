@@ -1,0 +1,306 @@
+<!doctype html>
+<!-- Generador de capturas del portafolio. Uso: abrir con #nombre-pantalla y capturar a 1200x750.
+     Script: design/capture-portfolio.sh -->
+<html lang="es"><head><meta charset="utf-8"><title>Mockups portafolio</title>
+<style>
+:root{--bg:#07060f;--card:#161328;--card2:#1f1a38;--text:#f6f4ff;--muted:#b8b3cc;--line:rgba(255,255,255,.12);--blue:#3b82f6;--pink:#d946ef;--green:#22c55e;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1200px;height:750px;overflow:hidden}
+body{font-family:Inter,-apple-system,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 10% 0%,rgba(124,58,237,.45),transparent 40%),radial-gradient(circle at 95% 100%,rgba(59,130,246,.35),transparent 40%),var(--bg);font-size:15px}
+.screen{display:none;position:absolute;inset:0;padding:44px}
+.screen.on{display:block}
+.win{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 80px rgba(0,0,0,.55);overflow:hidden;position:absolute}
+.bar{height:38px;display:flex;align-items:center;gap:7px;padding:0 14px;background:#110e20;border-bottom:1px solid var(--line);font-size:12px;color:var(--muted)}
+.bar i{width:11px;height:11px;border-radius:50%;background:#ff5f57}.bar i:nth-child(2){background:#febc2e}.bar i:nth-child(3){background:#28c840}
+.bar span{margin-left:12px}
+.body{padding:20px}
+.phone{position:absolute;width:300px;height:600px;border-radius:42px;background:#0c0a17;border:10px solid #23203a;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden}
+.phone .top{height:62px;display:flex;align-items:center;gap:10px;padding:14px 14px 0;background:#141126;border-bottom:1px solid var(--line)}
+.av{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:14px;background:linear-gradient(135deg,var(--blue),var(--pink));flex:none}
+.msgs{padding:12px;display:flex;flex-direction:column;gap:8px}
+.m{max-width:82%;padding:9px 12px;border-radius:14px;font-size:13px;line-height:1.4}
+.m.in{background:#221d3d;border-top-left-radius:4px}
+.m.out{background:linear-gradient(135deg,#2a3fa8,#6d2bb0);margin-left:auto;border-top-right-radius:4px}
+.m small{display:block;font-size:10px;color:#cfc8ff;opacity:.7;margin-top:3px;text-align:right}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;background:rgba(59,130,246,.16);color:#a9c6ff;border:1px solid rgba(59,130,246,.35)}
+.chip.g{background:rgba(34,197,94,.14);color:#86efac;border-color:rgba(34,197,94,.35)}
+.chip.p{background:rgba(217,70,239,.14);color:#f0abfc;border-color:rgba(217,70,239,.35)}
+.chip.a{background:rgba(245,158,11,.14);color:#fcd34d;border-color:rgba(245,158,11,.35)}
+.h{font-weight:800;font-size:18px;letter-spacing:-.01em}
+.mut{color:var(--muted);font-size:12px}
+.row{display:flex;align-items:center;gap:10px}
+.sp{justify-content:space-between}
+.list .it{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:12px;background:var(--card2);margin-bottom:8px;font-size:13px}
+.wave{display:flex;align-items:center;gap:4px;height:46px}
+.wave b{width:5px;border-radius:4px;background:linear-gradient(var(--pink),var(--blue))}
+.grid7{display:grid;grid-template-columns:60px repeat(5,1fr);gap:6px;font-size:11px}
+.slot{height:40px;border-radius:8px;background:#1b1732;border:1px dashed rgba(255,255,255,.06)}
+.ev{height:40px;border-radius:8px;padding:5px 7px;font-size:10.5px;line-height:1.25;font-weight:600}
+.ev.b{background:rgba(59,130,246,.3);border-left:3px solid var(--blue)}
+.ev.p{background:rgba(217,70,239,.25);border-left:3px solid var(--pink)}
+.ev.g{background:rgba(34,197,94,.22);border-left:3px solid var(--green)}
+.tag{position:absolute;right:44px;top:30px;font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#e9d5ff;background:rgba(217,70,239,.18);border:1px solid rgba(217,70,239,.4);padding:6px 12px;border-radius:999px}
+.title{position:absolute;left:44px;top:26px}
+.title .k{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#c4b5fd}
+.title .t{font-size:28px;font-weight:800;letter-spacing:-.02em;margin-top:4px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+td,th{padding:9px 8px;border-bottom:1px solid var(--line);text-align:left}
+th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+.src{font-size:11px;padding:6px 9px;border-radius:8px;background:#110e20;border:1px solid var(--line);color:var(--muted)}
+.btn{display:inline-block;padding:9px 14px;border-radius:999px;font-weight:700;font-size:12px;background:linear-gradient(90deg,var(--blue),var(--pink))}
+</style></head><body>
+
+<!-- 1 Dentistas: recepcionista de voz -->
+<section class="screen" id="dental">
+  <div class="title"><div class="k">Clínicas dentales</div><div class="t">Recepcionista de voz 24/7</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:720px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Agenda · Clínica Dental Sonrisa (demo)</span></div>
+    <div class="body">
+      <div class="row sp" style="margin-bottom:14px"><div class="h">Semana 44</div><div class="row"><span class="chip g">● Agente activo</span><span class="chip">3 citas creadas por IA hoy</span></div></div>
+      <div class="grid7">
+        <div></div><div class="mut">Lun</div><div class="mut">Mar</div><div class="mut">Mié</div><div class="mut">Jue</div><div class="mut">Vie</div>
+        <div class="mut">09:00</div><div class="ev b">Revisión<br>M. López</div><div class="slot"></div><div class="ev b">Empaste<br>J. Ruiz</div><div class="slot"></div><div class="ev b">Ortodoncia<br>A. Gil</div>
+        <div class="mut">10:30</div><div class="slot"></div><div class="ev b">Limpieza<br>R. Sanz</div><div class="slot"></div><div class="ev b">Implante<br>C. Mora</div><div class="slot"></div>
+        <div class="mut">12:00</div><div class="ev b">Endodoncia<br>L. Peña</div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="ev b">Revisión<br>P. Vidal</div>
+        <div class="mut">16:00</div><div class="slot"></div><div class="ev p">🤖 Revisión<br>S. Ortega</div><div class="slot"></div><div class="slot"></div><div class="slot"></div>
+        <div class="mut">17:30</div><div class="slot"></div><div class="slot"></div><div class="slot"></div><div class="ev p">🤖 Limpieza<br>Laura M.</div><div class="slot"></div>
+        <div class="mut">19:00</div><div class="slot"></div><div class="slot"></div><div class="ev p">🤖 Urgencia<br>D. Ramos</div><div class="slot"></div><div class="slot"></div>
+      </div>
+      <div class="row" style="margin-top:16px;gap:8px"><span class="chip p">🤖 Cita creada por el agente</span><span class="chip">WhatsApp de confirmación enviado</span><span class="chip a">Recordatorio 24 h</span></div>
+    </div>
+  </div>
+  <div class="phone" style="right:70px;top:100px">
+    <div style="padding:40px 18px;text-align:center">
+      <div class="mut">Llamada entrante · 21:47</div>
+      <div class="av" style="width:74px;height:74px;font-size:24px;margin:18px auto">IA</div>
+      <div class="h">Lucía · Recepción IA</div>
+      <div class="mut" style="margin-top:4px">Clínica Dental Sonrisa</div>
+      <div class="wave" style="justify-content:center;margin:20px 0"><b style="height:14px"></b><b style="height:30px"></b><b style="height:44px"></b><b style="height:24px"></b><b style="height:38px"></b><b style="height:18px"></b><b style="height:32px"></b><b style="height:12px"></b><b style="height:26px"></b></div>
+      <div class="m in" style="text-align:left;max-width:100%">«Te he reservado el jueves a las 17:30 para la limpieza. Te envío la confirmación por WhatsApp.»</div>
+      <div style="margin-top:26px;display:flex;justify-content:center;gap:24px"><div class="av" style="background:#2a2546">🔇</div><div class="av" style="background:#e5484d">✆</div><div class="av" style="background:#2a2546">⇄</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 Agente telefónico: llamadas entrantes / centralita -->
+<section class="screen" id="telefono">
+  <div class="title"><div class="k">Agente telefónico</div><div class="t">Centralita IA · llamadas entrantes</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:1112px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Panel de llamadas · Asesoría Gestiona+ (demo)</span></div>
+    <div class="body" style="display:grid;grid-template-columns:1.25fr 1fr;gap:20px">
+      <div>
+        <div class="row sp" style="margin-bottom:10px"><div class="h">Hoy</div><span class="chip g">● 2 llamadas en curso</span></div>
+        <table>
+          <tr><th>Hora</th><th>Llamante</th><th>Motivo</th><th>Resultado</th></tr>
+          <tr><td>11:42</td><td>+34 6•• •• 218</td><td>Renta 2026</td><td><span class="chip g">Cita creada</span></td></tr>
+          <tr><td>11:31</td><td>Construcciones Albor</td><td>Factura</td><td><span class="chip">Transferida a Contabilidad</span></td></tr>
+          <tr><td>11:05</td><td>+34 9•• •• 504</td><td>Horario</td><td><span class="chip g">Resuelta por IA</span></td></tr>
+          <tr><td>10:48</td><td>María Ferrer</td><td>Nómina</td><td><span class="chip p">Recado por email</span></td></tr>
+          <tr><td>10:20</td><td>+34 6•• •• 771</td><td>Alta autónomo</td><td><span class="chip g">Cita creada</span></td></tr>
+          <tr><td>09:57</td><td>Taller Ribera</td><td>Modelo 303</td><td><span class="chip">Transferida a Fiscal</span></td></tr>
+          <tr><td>09:12</td><td>+34 6•• •• 390</td><td>Precios</td><td><span class="chip g">Resuelta por IA</span></td></tr>
+        </table>
+      </div>
+      <div style="background:var(--card2);border-radius:14px;padding:16px">
+        <div class="row sp"><div class="h" style="font-size:15px">Llamada en curso · 11:46</div><span class="chip p">Transcripción en vivo</span></div>
+        <div class="wave" style="margin:10px 0"><b style="height:10px"></b><b style="height:22px"></b><b style="height:36px"></b><b style="height:18px"></b><b style="height:42px"></b><b style="height:26px"></b><b style="height:14px"></b><b style="height:30px"></b><b style="height:20px"></b><b style="height:38px"></b><b style="height:12px"></b><b style="height:28px"></b></div>
+        <div class="msgs" style="padding:0">
+          <div class="m in"><b>IA:</b> Asesoría Gestiona+, soy el asistente virtual. ¿En qué puedo ayudarte?</div>
+          <div class="m out">Quería hablar con alguien de laboral por un contrato.</div>
+          <div class="m in"><b>IA:</b> Te paso con el departamento laboral. Si no está disponible, le dejo tu recado con un resumen.</div>
+        </div>
+        <div class="row" style="margin-top:12px;gap:8px"><span class="chip">Intención: laboral</span><span class="chip a">Transfiriendo…</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 Llamadas salientes -->
+<section class="screen" id="salientes">
+  <div class="title"><div class="k">Agente telefónico</div><div class="t">Llamadas salientes automáticas</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:1112px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Campañas · Red de Fisioterapia Movimiento (demo)</span></div>
+    <div class="body">
+      <div class="row" style="gap:14px;margin-bottom:18px">
+        <div style="flex:1;background:var(--card2);border-radius:14px;padding:16px"><div class="mut">Campaña</div><div class="h">Confirmación citas de mañana</div><div class="row" style="margin-top:10px;gap:8px"><span class="chip g">En curso</span><span class="chip">Solo pacientes con autorización</span></div></div>
+        <div style="flex:1;background:var(--card2);border-radius:14px;padding:16px"><div class="mut">Campaña</div><div class="h">Recordatorio revisión anual</div><div class="row" style="margin-top:10px;gap:8px"><span class="chip a">Programada · 10:00</span></div></div>
+        <div style="flex:1;background:var(--card2);border-radius:14px;padding:16px"><div class="mut">Campaña</div><div class="h">Reactivar bonos sin usar</div><div class="row" style="margin-top:10px;gap:8px"><span class="chip">Borrador</span></div></div>
+      </div>
+      <table>
+        <tr><th>Paciente</th><th>Cita</th><th>Estado llamada</th><th>Resultado</th><th>Acción automática</th></tr>
+        <tr><td>Elena P.</td><td>Mañana 09:00</td><td><span class="chip g">Completada</span></td><td>Confirma</td><td class="mut">—</td></tr>
+        <tr><td>Marcos T.</td><td>Mañana 09:45</td><td><span class="chip g">Completada</span></td><td>Cambia a viernes</td><td class="mut">Agenda actualizada</td></tr>
+        <tr><td>Rosa V.</td><td>Mañana 10:30</td><td><span class="chip g">Completada</span></td><td>Cancela</td><td class="mut">Hueco ofrecido a lista de espera</td></tr>
+        <tr><td>Iván C.</td><td>Mañana 11:15</td><td><span class="chip p">● Llamando…</span></td><td class="mut">—</td><td class="mut">—</td></tr>
+        <tr><td>Nuria S.</td><td>Mañana 12:00</td><td><span class="chip a">Buzón de voz</span></td><td class="mut">Reintento 17:00</td><td class="mut">SMS enviado</td></tr>
+        <tr><td>Pedro A.</td><td>Mañana 16:30</td><td><span class="chip">En cola</span></td><td class="mut">—</td><td class="mut">—</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- 4 Restaurantes: reservas WhatsApp -->
+<section class="screen" id="restaurante">
+  <div class="title"><div class="k">Restaurantes</div><div class="t">Reservas por WhatsApp y teléfono</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:700px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Sala · Restaurante Mar de Fondo (demo) · Sábado</span></div>
+    <div class="body">
+      <div class="row sp" style="margin-bottom:14px"><div class="h">Turno de cena</div><div class="row"><span class="chip g">● Agente atendiendo</span><span class="chip">ES · EN · FR</span></div></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px">
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(34,197,94,.16)"><b>Mesa 1 · 2p</b><span class="mut">20:30 · García</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(217,70,239,.2)"><b>Mesa 2 · 4p</b><span class="mut">21:00 · Smith 🤖</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px"><b>Mesa 3 · 2p</b><span class="mut">Libre</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(34,197,94,.16)"><b>Mesa 4 · 6p</b><span class="mut">21:30 · Durand</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(217,70,239,.2)"><b>Mesa 5 · 2p</b><span class="mut">21:30 · Laura 🤖</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px"><b>Mesa 6 · 4p</b><span class="mut">Libre</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(34,197,94,.16)"><b>Terraza 1 · 8p</b><span class="mut">22:00 · Empresa</span></div></div>
+        <div class="list"><div class="it" style="flex-direction:column;align-items:flex-start;height:96px;background:rgba(217,70,239,.2)"><b>Terraza 2 · 3p</b><span class="mut">22:00 · Moreau 🤖</span></div></div>
+      </div>
+      <div class="row" style="margin-top:8px;gap:8px"><span class="chip p">🤖 Reserva hecha por el agente</span><span class="chip a">Alergia: frutos secos (mesa 5)</span></div>
+    </div>
+  </div>
+  <div class="phone" style="right:70px;top:100px">
+    <div class="top"><div class="av">MF</div><div><b style="font-size:14px">Mar de Fondo</b><div class="mut" style="font-size:10px">Asistente de reservas</div></div></div>
+    <div class="msgs">
+      <div class="m out">Hola! Mesa para 2 el sábado por la noche? 🙂<small>18:02</small></div>
+      <div class="m in">¡Hola! Para el sábado tengo 21:30 en sala o 22:00 en terraza. ¿Cuál prefieres?<small>18:02</small></div>
+      <div class="m out">21:30 en sala. Mi pareja es alérgica a los frutos secos<small>18:03</small></div>
+      <div class="m in">Reservado ✅ Sábado 21:30, 2 personas, a nombre de Laura. He avisado a cocina de la alergia. ¿Algo más?<small>18:03</small></div>
+      <div class="m out">Perfecto, gracias!<small>18:03</small></div>
+      <div class="m in">¡A vosotros! Te enviaré un recordatorio el sábado por la mañana 🍷<small>18:03</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 Reservas: peluquería / centros con citas -->
+<section class="screen" id="reservas">
+  <div class="title"><div class="k">Reservas y citas</div><div class="t">Motor de reservas 24/7</div></div><div class="tag">Demo</div>
+  <div class="phone" style="left:80px;top:100px">
+    <div class="top"><div class="av">EA</div><div><b style="font-size:14px">Estudio Aura</b><div class="mut" style="font-size:10px">Reserva tu cita</div></div></div>
+    <div style="padding:14px">
+      <div class="mut" style="margin-bottom:8px">1 · Servicio</div>
+      <div class="list"><div class="it" style="border:1px solid var(--pink)">✂️ Corte + peinado <span style="margin-left:auto" class="mut">45 min</span></div><div class="it">🎨 Color <span style="margin-left:auto" class="mut">90 min</span></div></div>
+      <div class="mut" style="margin:10px 0 8px">2 · Día y hora</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;font-size:12px;text-align:center">
+        <div class="slot" style="height:auto;padding:8px">10:00</div><div class="slot" style="height:auto;padding:8px">11:15</div><div style="padding:8px;border-radius:8px;background:linear-gradient(90deg,var(--blue),var(--pink));font-weight:700">12:30</div>
+        <div class="slot" style="height:auto;padding:8px">16:00</div><div class="slot" style="height:auto;padding:8px">17:45</div><div class="slot" style="height:auto;padding:8px">19:00</div>
+      </div>
+      <div class="mut" style="margin:12px 0 8px">3 · Profesional</div>
+      <div class="row"><div class="av" style="width:30px;height:30px;font-size:11px">MA</div><div class="av" style="width:30px;height:30px;font-size:11px;opacity:.5">JL</div><div class="mut">Cualquiera</div></div>
+      <div class="btn" style="display:block;text-align:center;margin-top:18px;padding:12px">Confirmar cita</div>
+    </div>
+  </div>
+  <div class="win" style="left:430px;top:110px;width:726px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Reservas · Estudio Aura (demo)</span></div>
+    <div class="body">
+      <div class="row sp" style="margin-bottom:14px"><div class="h">Canales de reserva</div><span class="chip g">● Sincronizado con la agenda</span></div>
+      <div class="list">
+        <div class="it">🌐 <b>Web</b><span class="mut">Widget de reservas en tu página</span><span class="chip g" style="margin-left:auto">Activo</span></div>
+        <div class="it">💬 <b>WhatsApp</b><span class="mut">El agente reserva conversando</span><span class="chip g" style="margin-left:auto">Activo</span></div>
+        <div class="it">📞 <b>Teléfono</b><span class="mut">Recepcionista de voz IA</span><span class="chip g" style="margin-left:auto">Activo</span></div>
+        <div class="it">📍 <b>Google</b><span class="mut">Botón «Reservar» en tu ficha</span><span class="chip g" style="margin-left:auto">Activo</span></div>
+        <div class="it">📸 <b>Instagram</b><span class="mut">Respuestas a mensajes directos</span><span class="chip a" style="margin-left:auto">Opcional</span></div>
+      </div>
+      <div class="row sp" style="margin:18px 0 10px"><div class="h" style="font-size:15px">Automatizaciones</div></div>
+      <div class="row" style="flex-wrap:wrap;gap:8px"><span class="chip">Recordatorio 24 h</span><span class="chip">Confirmar o cambiar con 1 clic</span><span class="chip">Lista de espera automática</span><span class="chip">Señal / depósito online</span><span class="chip p">Reseña en Google tras la visita</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 Agentes IA para empresas -->
+<section class="screen" id="empresa">
+  <div class="title"><div class="k">Agentes IA para empresas</div><div class="t">Asistente interno con tus datos</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:1112px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Asistente · Distribuciones Iberia Pack (demo)</span></div>
+    <div style="display:grid;grid-template-columns:230px 1fr;height:562px">
+      <div style="border-right:1px solid var(--line);padding:16px;background:#130f24">
+        <div class="mut" style="margin-bottom:10px">Conectado a</div>
+        <div class="list"><div class="it">📦 ERP · stock</div><div class="it">💶 Tarifas 2026</div><div class="it">📄 Condiciones</div><div class="it">🧾 Pedidos</div><div class="it">📚 Manuales</div></div>
+        <div class="chip g" style="margin-top:8px">Permisos por usuario</div>
+      </div>
+      <div style="padding:20px;display:flex;flex-direction:column">
+        <div class="msgs" style="padding:0;flex:1;gap:12px">
+          <div class="m out" style="max-width:60%">¿Tenemos stock de caja reforzada 40x30 y qué precio le aplico a Frutas Levante por 2.000 uds?</div>
+          <div class="m in" style="max-width:78%;font-size:13.5px">Hay <b>3.420 uds</b> en el almacén de Valencia y 800 en Madrid.<br><br>Frutas Levante tiene tarifa <b>Mayorista B</b>: para 2.000 uds el precio es <b>0,41 €/ud</b> (descuento por volumen del 6% incluido). Entrega en 48 h desde Valencia.
+            <div class="row" style="margin-top:10px;gap:6px;flex-wrap:wrap"><span class="src">📦 ERP · stock 11:40</span><span class="src">💶 Tarifas 2026 · p. 4</span><span class="src">📄 Condiciones Frutas Levante</span></div></div>
+          <div class="m out" style="max-width:60%">Prepárame la oferta en PDF.</div>
+          <div class="m in" style="max-width:78%">Oferta preparada ✅ <span class="chip" style="margin-left:6px">Oferta_FrutasLevante.pdf</span> ¿La envío al contacto de compras o la revisas primero?</div>
+        </div>
+        <div style="margin-top:12px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:#110e20" class="mut">Pregunta lo que necesites…</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 Chat web comercial -->
+<section class="screen" id="ventas">
+  <div class="title"><div class="k">Agentes IA para empresas</div><div class="t">Agente comercial en tu web</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:1112px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>inmopuertasol.es (demo)</span></div>
+    <div style="position:relative;height:562px;padding:40px;background:linear-gradient(120deg,#1a1530,#0f0c1d)">
+      <div class="mut" style="font-weight:700;letter-spacing:.1em">INMOBILIARIA PUERTA SOL</div>
+      <div style="font-size:38px;font-weight:800;max-width:470px;line-height:1.1;margin-top:14px">Encuentra tu casa en Madrid centro</div>
+      <div class="row" style="gap:12px;margin-top:26px">
+        <div style="width:150px;height:110px;border-radius:12px;background:linear-gradient(135deg,#3b3170,#1f2b5c)"></div>
+        <div style="width:150px;height:110px;border-radius:12px;background:linear-gradient(135deg,#2c4a6e,#3b2a63)"></div>
+        <div style="width:150px;height:110px;border-radius:12px;background:linear-gradient(135deg,#4a2c63,#22335e)"></div>
+      </div>
+      <div style="position:absolute;right:30px;bottom:24px;width:380px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 60px rgba(0,0,0,.6);overflow:hidden">
+        <div class="row" style="padding:12px 14px;background:linear-gradient(90deg,#2a3fa8,#6d2bb0)"><div class="av" style="background:#fff2;width:30px;height:30px;font-size:11px">IA</div><b style="font-size:14px">Asistente Puerta Sol</b><span style="margin-left:auto;font-size:11px">● en línea</span></div>
+        <div class="msgs">
+          <div class="m in">¡Hola! ¿Buscas comprar o alquilar?</div>
+          <div class="m out">Comprar, 2 habitaciones, hasta 350.000 €</div>
+          <div class="m in">Tengo 3 pisos que encajan en Chamberí y Malasaña. ¿Te va bien visitarlos el jueves por la tarde?</div>
+          <div class="m out">Sí, a partir de las 18:00</div>
+          <div class="m in">Visita agendada el jueves a las 18:30 con Carlos ✅ ¿Me dejas tu teléfono para confirmarte?</div>
+        </div>
+        <div class="row" style="padding:0 12px 12px;gap:6px"><span class="chip g">Lead cualificado</span><span class="chip">Enviado al CRM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 Automatización documentos -->
+<section class="screen" id="automatizacion">
+  <div class="title"><div class="k">Automatización</div><div class="t">Facturas y documentos sin teclear</div></div><div class="tag">Demo</div>
+  <div class="win" style="left:44px;top:110px;width:1112px;height:600px">
+    <div class="bar"><i></i><i></i><i></i><span>Bandeja de documentos · Construcciones Albor (demo)</span></div>
+    <div class="body" style="display:grid;grid-template-columns:330px 1fr;gap:22px">
+      <div style="background:#fff;color:#222;border-radius:10px;padding:18px;font-size:11px;height:500px;position:relative">
+        <b style="font-size:16px">FACTURA</b><div style="float:right;text-align:right">Áridos del Sur S.L.<br>B-12345678</div>
+        <div style="margin-top:24px;background:#fde68a;display:inline-block;padding:2px 4px">Nº F-2026-0841</div><br>
+        <div style="background:#fde68a;display:inline-block;padding:2px 4px;margin-top:6px">Fecha: 21/10/2026</div>
+        <div style="margin-top:22px;border-top:1px solid #ddd;padding-top:10px">Grava 20/40 · 24 t ............ 528,00<br>Arena lavada · 18 t ............ 342,00<br>Transporte ......................... 120,00</div>
+        <div style="margin-top:16px;text-align:right">Base: 990,00<br>IVA 21%: 207,90<br><b style="background:#fde68a;padding:2px 4px;font-size:13px">Total: 1.197,90 €</b></div>
+        <div style="position:absolute;bottom:16px;left:18px;color:#888">Pedido ref. PO-3321</div>
+      </div>
+      <div>
+        <div class="row sp" style="margin-bottom:12px"><div class="h">Datos extraídos por IA</div><span class="chip g">✓ Cuadra con pedido PO-3321</span></div>
+        <table>
+          <tr><th>Campo</th><th>Valor</th><th>Estado</th></tr>
+          <tr><td>Proveedor</td><td>Áridos del Sur S.L.</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>NIF</td><td>B-12345678</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>Nº factura</td><td>F-2026-0841</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>Base imponible</td><td>990,00 €</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>IVA</td><td>207,90 € (21%)</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>Total</td><td>1.197,90 €</td><td><span class="chip g">OK</span></td></tr>
+          <tr><td>Cuenta contable</td><td>600 · Compras materiales</td><td><span class="chip a">Revisar</span></td></tr>
+        </table>
+        <div class="row" style="margin-top:16px;gap:10px"><span class="btn">Enviar a contabilidad</span><span class="chip">📥 Recibidas por email hoy: 14</span><span class="chip p">2 pendientes de revisión</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+var id=(location.hash||'#dental').slice(1);
+var sc=document.getElementById(id); sc.classList.add('on');
+// Sin título ni etiqueta (los pone la tarjeta de la web): subir y alargar las ventanas
+sc.querySelectorAll('.title,.tag').forEach(function(e){e.style.display='none'});
+sc.querySelectorAll('.win,.phone').forEach(function(e){
+  var t=parseInt(e.style.top)||0; e.style.top=(t-64)+'px';
+  if(e.classList.contains('win')){var h=parseInt(e.style.height)||600; e.style.height=(h+64)+'px';}
+  else {e.style.height='640px';}
+});
+</script>
+</body></html>

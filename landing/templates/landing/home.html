@@ -22,6 +22,7 @@
     <nav id="main-nav" class="main-nav" aria-label="{{ c.nav_aria }}">
       <a href="#paquetes">{{ c.nav_packages }}</a>
       <a href="#servicios">{{ c.nav_services }}</a>
+      <a href="#portafolio">{{ c.nav_portfolio }}</a>
       <a href="#metodo">{{ c.nav_method }}</a>
       <a href="#chat">{{ c.nav_chat }}</a>
     </nav>
@@ -116,6 +117,38 @@
           <p>{{ text }}</p>
         </article>
         {% endfor %}
+      </div>
+    </section>
+
+    <section id="portafolio" class="section-shell section-space">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">{{ c.portfolio_eyebrow }}</p>
+          <h2>{{ c.portfolio_title }}</h2>
+        </div>
+        <p>{{ c.portfolio_lead }}</p>
+      </div>
+      <div class="portfolio-grid">
+        {% for slug, tag, title, text in c.portfolio %}
+        <article class="portfolio-card">
+          <a class="portfolio-shot" href="{% static 'landing/portfolio/'|add:slug|add:'.jpg' %}" target="_blank" rel="noopener">
+            <img src="{% static 'landing/portfolio/'|add:slug|add:'.jpg' %}" alt="{{ title }} — {{ c.portfolio_demo }}" width="1200" height="750" loading="lazy">
+            <span class="portfolio-badge">{{ c.portfolio_demo }}</span>
+          </a>
+          <div class="portfolio-body">
+            <p class="tag">{{ tag }}</p>
+            <h3>{{ title }}</h3>
+            <p>{{ text }}</p>
+            <a class="portfolio-link" href="#chat">{{ c.portfolio_cta }} →</a>
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+      <div class="portfolio-more">
+        <h3>{{ c.portfolio_more_title }}</h3>
+        <ul>
+          {% for item in c.portfolio_more %}<li>{{ item }}</li>{% endfor %}
+        </ul>
       </div>
     </section>
 
